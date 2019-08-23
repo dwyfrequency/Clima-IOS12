@@ -53,8 +53,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 print("Success! We got some weather data")
                 let weatherJSON: JSON = JSON(response.result.value!)
                 print(weatherJSON)
+                self.updateWeatherData(json: weatherJSON)
             } else {
-                print("Error \(response.result.error)")
+                print("Error \(response.result.error!)")
                 self.cityLabel.text = "Connection tissue"
             }
         }
@@ -70,7 +71,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
    
     
     //Write the updateWeatherData method here:
-    
+    func updateWeatherData(json: JSON) -> Void {
+        let tempResult = json["main"]["temp"]
+        print(tempResult)
+    }
 
     
     
